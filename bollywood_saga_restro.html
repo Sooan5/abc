@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bollywood Saga Restro | Cinematic Dining & Lounge</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Configuration for Custom Colors & Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cinematic: {
+                            dark: '#08060B',
+                            card: '#131018',
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            crimson: '#8B0000',
+                            crimsonBright: '#DC143C',
+                            midnight: '#0F172A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Styles for Glassmorphism & Glow Effects -->
+    <style>
+        body {
+            background-color: #08060B;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-panel {
+            background: rgba(19, 16, 24, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF6D6 0%, #D4AF37 50%, #AA771C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border {
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        .glow-gold {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+        .glow-crimson {
+            box-shadow: 0 0 35px rgba(139, 0, 0, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08060B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D2338;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-cinematic-dark text-slate-100 antialiased selection:bg-cinematic-gold selection:text-cinematic-dark">
+
+    <!-- Header & Navigation -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-cinematic-dark/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cinematic-crimson to-cinematic-dark p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-cinematic-dark rounded-full flex items-center justify-center p-1">
+                        <!-- Custom SVG Logo -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-cinematic-gold" fill="currentColor">
+                            <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="6 3"/>
+                            <path d="M50 20 L58 38 L78 40 L63 54 L67 74 L50 64 L33 74 L37 54 L22 40 L42 38 Z" fill="url(#goldGradient)" />
+                            <defs>
+                                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#F3E5AB" />
+                                    <stop offset="50%" stop-color="#D4AF37" />
+                                    <stop offset="100%" stop-color="#8B6508" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-serif font-bold tracking-wider gold-gradient-text block leading-none">BOLLYWOOD</span>
+                    <span class="text-xs uppercase tracking-widest text-cinematic-goldLight font-medium block mt-1">Saga Restro</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="text-cinematic-gold hover:text-white transition-colors">Home</a>
+                <a href="#about" class="text-slate-300 hover:text-cinematic-gold transition-colors">The Saga</a>
+                <a href="#menu" class="text-slate-300 hover:text-cinematic-gold transition-colors">Cinematic Menu</a>
+                <a href="#experience" class="text-slate-300 hover:text-cinematic-gold transition-colors">Ambience</a>
+                <a href="#reviews" class="text-slate-300 hover:text-cinematic-gold transition-colors">Reviews</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#reservation" class="relative group overflow-hidden rounded-full p-[1px] focus:outline-none">
+                    <span class="absolute inset-0 bg-gradient-to-r from-cinematic-gold via-cinematic-crimsonBright to-cinematic-gold animate-gradient"></span>
+                    <span class="relative px-6 py-2.5 rounded-full bg-cinematic-dark text-cinematic-gold font-semibold text-sm transition-all group-hover:bg-opacity-80 group-hover:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chair"></i> Book A Table
+                    </span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-cinematic-gold focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-cinematic-dark/95 backdrop-blur-xl border-b border-cinematic-gold/20 py-6 px-6 shadow-2xl transition-all">
+            <div class="flex flex-col gap-4 text-center">
+                <a href="#home" class="mobile-link text-cinematic-gold font-medium py-2 text-lg">Home</a>
+                <a href="#about" class="mobile-link text-slate-300 font-medium py-2 text-lg">The Saga</a>
+                <a href="#menu" class="mobile-link text-slate-300 font-medium py-2 text-lg">Cinematic Menu</a>
+                <a href="#experience" class="mobile-link text-slate-300 font-medium py-2 text-lg">Ambience</a>
+                <a href="#reviews" class="mobile-link text-slate-300 font-medium py-2 text-lg">Reviews</a>
+                <a href="#reservation" class="mobile-link mt-2 py-3 rounded-xl bg-gradient-to-r from-cinematic-crimson to-cinematic-gold text-white font-semibold shadow-lg">Book A Table</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Imagery with Gradient Overlay -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-cinematic-dark via-cinematic-dark/70 to-cinematic-dark/40 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=2000" alt="Cinematic Restaurant Ambience" class="w-full h-full object-cover object-center filter brightness-50 scale-105 transform animate-pulse duration-[10000ms]">
+        </div>
+
+        <div class="relative z-20 max-w-5xl mx-auto px-4 text-center py-20">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cinematic-crimson/30 border border-cinematic-gold/30 text-cinematic-goldLight text-xs md:text-sm font-medium mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-clapperboard text-cinematic-gold"></i> Experience the Golden Era & Modern Glamour
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold font-serif tracking-tight mb-6">
+                Where Culinary Art Meets <span class="gold-gradient-text block mt-2">Bollywood Legend</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-10 leading-relaxed font-light">
+                Step onto the silver screen. Indulge in royal Awadhi & fusion curries, dramatic molecular cocktails, and an atmosphere crafted for cinematic romance and celebration.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cinematic-gold to-yellow-600 text-cinematic-dark font-bold text-base shadow-xl hover:shadow-cinematic-gold/30 hover:scale-105 transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-utensils"></i> Explore Cinematic Menu
+                </a>
+                <a href="#reservation" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel text-cinematic-gold font-semibold text-base hover:bg-white/10 hover:border-cinematic-gold transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-ticket"></i> Reserve Your Box Office
+                </a>
+            </div>
+
+            <!-- Highlights Pill -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto mt-16 pt-12 border-t border-white/10 text-left">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-cinematic-crimson/20 border border-cinematic-crimson/40 flex items-center justify-center text-cinematic-gold">
+                        <i class="fa-solid fa-crown text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-slate-100 text-sm">Royal Recipes</h4>
+                        <p class="text-xs text-slate-400">Heirloom Mughal spices</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-cinematic-crimson/20 border border-cinematic-crimson/40 flex items-center justify-center text-cinematic-gold">
+                        <i class="fa-solid fa-wine-glass-empty text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-slate-100 text-sm">Star Cocktails</h4>
+                        <p class="text-xs text-slate-400">Themed molecular mixology</p>
+                    </div>
+                </div>
+                <div class="col-span-2 md:col-span-1 flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-cinematic-crimson/20 border border-cinematic-crimson/40 flex items-center justify-center text-cinematic-gold">
+                        <i class="fa-solid fa-star text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-slate-100 text-sm">Live Symphony</h4>
+                        <p class="text-xs text-slate-400">Sufi & retro Bollywood nights</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative bg-cinematic-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Images Collage -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border border-cinematic-gold/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&q=80&w=1000" alt="Restaurant Interior" class="w-full h-[450px] object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 w-2/3 rounded-2xl overflow-hidden border-2 border-cinematic-gold shadow-2xl hidden sm:block z-20">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="Chef Preparing Dish" class="w-full h-64 object-cover">
+                    </div>
+                    <!-- Decorative Badge -->
+                    <div class="absolute top-6 -left-6 z-30 glass-panel p-4 rounded-xl shadow-xl border border-cinematic-gold/30 flex items-center gap-3">
+                        <div class="text-3xl text-cinematic-gold font-serif font-bold">10+</div>
+                        <div class="text-xs text-slate-300 font-medium uppercase tracking-wider">Years of Cinematic<br>Culinary Excellence</div>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2 text-cinematic-gold text-sm font-semibold uppercase tracking-widest">
+                        <i class="fa-solid fa-film"><span> The Bollywood Saga Story</span></i>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-bold leading-tight">
+                        Where Every Dish Tells a Blockbuster Story
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed font-light">
+                        Founded with a passion for silver-screen grandeur and authentic royal Indian gastronomy, <span class="text-cinematic-gold font-medium">Bollywood Saga Restro</span> transports you to the golden era of cinema. From velvet booths styled after classic studio sets to gold-plated cutlery and aromatic spices imported straight from vintage estates.
+                    </p>
+                    <p class="text-slate-400 font-light text-sm leading-relaxed">
+                        Our master chefs choreograph flavors with the same precision as a legendary director. Whether you're craving smoky Galouti Kebabs fit for an emperor or modern molecular refreshments named after your favorite timeless stars, every moment here is premier night.
+                    </p>
+
+                    <!-- Feature checkmarks -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cinematic-gold/20 flex items-center justify-center text-cinematic-gold text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm font-medium text-slate-200">Private Screening Dining Rooms</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cinematic-gold/20 flex items-center justify-center text-cinematic-gold text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm font-medium text-slate-200">Authentic Tandoor & Dum Craft</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cinematic-gold/20 flex items-center justify-center text-cinematic-gold text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm font-medium text-slate-200">Customized Celebrity Cocktails</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-cinematic-gold/20 flex items-center justify-center text-cinematic-gold text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-sm font-medium text-slate-200">Valet Red Carpet Service</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-cinematic-dark/90 relative border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cinematic-gold text-sm font-semibold uppercase tracking-widest block mb-3">
+                    <i class="fa-solid fa-utensils"></i> Curated Masterpieces
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold mb-4">The Cinematic Menu</h2>
+                <p class="text-slate-400 font-light">Explore our blockbuster culinary creations, hand-crafted by our veteran master chefs.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+                <button class="menu-filter-btn active px-6 py-2.5 rounded-full text-sm font-semibold transition-all bg-gradient-to-r from-cinematic-gold to-yellow-600 text-cinematic-dark shadow-md" data-category="all">
+                    All Blockbusters
+                </button>
+                <button class="menu-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-cinematic-gold hover:border-cinematic-gold" data-category="starters">
+                    Starters & Appetizers
+                </button>
+                <button class="menu-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-cinematic-gold hover:border-cinematic-gold" data-category="mains">
+                    Royal Main Course
+                </button>
+                <button class="menu-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-cinematic-gold hover:border-cinematic-gold" data-category="cocktails">
+                    Cinematic Cocktails
+                </button>
+                <button class="menu-filter-btn px-6 py-2.5 rounded-full text-sm font-semibold transition-all glass-panel text-slate-300 hover:text-cinematic-gold hover:border-cinematic-gold" data-category="desserts">
+                    Grand Finales (Desserts)
+                </button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Items will be dynamically populated or filtered by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Ambience Section -->
+    <section id="experience" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cinematic-gold text-sm font-semibold uppercase tracking-widest block mb-3">
+                    <i class="fa-solid fa-camera-retro"></i> Silver Screen Vibes
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold mb-4">Immersive Ambience</h2>
+                <p class="text-slate-400 font-light">Every corner of Bollywood Saga Restro is designed to evoke nostalgia, glamour, and high-society celebration.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group relative rounded-2xl overflow-hidden border border-cinematic-gold/20 shadow-xl h-96">
+                    <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&q=80&w=800" alt="Lounge Area" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cinematic-dark via-cinematic-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <span class="text-xs uppercase tracking-widest text-cinematic-gold font-bold mb-1">VIP Lounge</span>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">The Studio 70 Booths</h3>
+                        <p class="text-slate-300 text-sm font-light">Intimate leather seating surrounded by iconic black-and-white portraits of cinematic legends.</p>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-cinematic-gold/20 shadow-xl h-96">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=800" alt="Bar Area" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cinematic-dark via-cinematic-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <span class="text-xs uppercase tracking-widest text-cinematic-gold font-bold mb-1">Mixology Bar</span>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Director's Cut Bar</h3>
+                        <p class="text-slate-300 text-sm font-light">Watch our master mixologists perform fiery presentations and smoke-infused potion cocktails.</p>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden border border-cinematic-gold/20 shadow-xl h-96">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=800" alt="Live Event" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-cinematic-dark via-cinematic-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <span class="text-xs uppercase tracking-widest text-cinematic-gold font-bold mb-1">Entertainment</span>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Sufi & Retro Stage</h3>
+                        <p class="text-slate-300 text-sm font-light">Live soulful ghazals and upbeat retro Bollywood tracks performed every weekend evening.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-cinematic-dark/80 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cinematic-gold text-sm font-semibold uppercase tracking-widest block mb-3">
+                    <i class="fa-solid fa-star"></i> Critic Acclaim
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold mb-4">What Patrons Are Saying</h2>
+                <p class="text-slate-400 font-light">Read rave reviews from food critics, Bollywood celebrities, and our esteemed guests.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="glass-panel p-8 rounded-2xl relative flex flex-col justify-between border border-cinematic-gold/20">
+                    <div>
+                        <div class="flex items-center gap-1 text-cinematic-gold mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+                            "An absolute masterpiece! The Galouti Kebabs melted on my tongue, and the 'Don's Elixir' cocktail was a spectacle in itself. The ambiance makes you feel like an A-list star."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Reviewer" class="w-12 h-12 rounded-full object-cover border-2 border-cinematic-gold">
+                        <div>
+                            <h4 class="font-serif font-bold text-white text-sm">Priyanka Kapoor</h4>
+                            <p class="text-xs text-cinematic-gold">Food & Lifestyle Journalist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-panel p-8 rounded-2xl relative flex flex-col justify-between border border-cinematic-gold/20">
+                    <div>
+                        <div class="flex items-center gap-1 text-cinematic-gold mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+                            "We celebrated our anniversary here in the private Studio Booth, and the hospitality was truly royal. The Butter Chicken is unmatched in its richness and authentic flavor profile."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Reviewer" class="w-12 h-12 rounded-full object-cover border-2 border-cinematic-gold">
+                        <div>
+                            <h4 class="font-serif font-bold text-white text-sm">Vikramaditya Roy</h4>
+                            <p class="text-xs text-cinematic-gold">Film Director & Patron</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-panel p-8 rounded-2xl relative flex flex-col justify-between border border-cinematic-gold/20">
+                    <div>
+                        <div class="flex items-center gap-1 text-cinematic-gold mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+                            "From the moment you walk the red carpet to the final bite of the Shahi Tukda, Bollywood Saga Restro delivers pure unadulterated luxury. Can't wait to return!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150" alt="Reviewer" class="w-12 h-12 rounded-full object-cover border-2 border-cinematic-gold">
+                        <div>
+                            <h4 class="font-serif font-bold text-white text-sm">Ananya Sen</h4>
+                            <p class="text-xs text-cinematic-gold">Frequent Diner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Reservation Section -->
+    <section id="reservation" class="py-24 relative bg-cinematic-dark overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=2000" alt="Background" class="w-full h-full object-cover">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-cinematic-gold/30 shadow-2xl">
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <span class="text-cinematic-gold text-sm font-semibold uppercase tracking-widest block mb-2">
+                        <i class="fa-solid fa-ticket"></i> Box Office Booking
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold">Reserve Your Table</h2>
+                    <p class="text-slate-400 text-sm mt-2">Secure your spot for an unforgettable cinematic dining experience.</p>
+                </div>
+
+                <form id="reservation-form" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Full Name *</label>
+                            <input type="text" id="res-name" required placeholder="e.g. Shah Rukh Khan" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Email Address *</label>
+                            <input type="email" id="res-email" required placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Phone Number *</label>
+                            <input type="tel" id="res-phone" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Date *</label>
+                            <input type="date" id="res-date" required class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Time Slot *</label>
+                            <select id="res-time" required class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                                <option value="" disabled selected>Select Showtime</option>
+                                <option value="12:30 PM">12:30 PM (Matinee Lunch)</option>
+                                <option value="02:00 PM">02:00 PM (Lunch)</option>
+                                <option value="07:00 PM">07:00 PM (Evening Premiere)</option>
+                                <option value="09:00 PM">09:00 PM (Blockbuster Dinner)</option>
+                                <option value="10:30 PM">10:30 PM (Midnight Lounge)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Number of Guests *</label>
+                            <select id="res-guests" required class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                                <option value="1">1 Person (Solo Star)</option>
+                                <option value="2" selected>2 Guests (Romantic Duo)</option>
+                                <option value="4">4 Guests (Family Cast)</option>
+                                <option value="6">6 Guests (Blockbuster Squad)</option>
+                                <option value="10+">10+ Guests (VIP Grand Premiere)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Seating Preference</label>
+                            <select id="res-booth" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-cinematic-gold transition-colors text-sm">
+                                <option value="Studio 70 Booth">Studio 70 Booth (Standard VIP)</option>
+                                <option value="Director's Box">Director's Box (Stage View)</option>
+                                <option value="Rooftop Terrace">Rooftop Starry Deck</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-cinematic-gold mb-2">Special Requests / Dietary Notes</label>
+                        <textarea id="res-notes" rows="3" placeholder="Anniversary celebration, allergy information, or specific requests..." class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cinematic-gold transition-colors text-sm"></textarea>
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <button type="submit" class="w-full sm:w-auto px-10 py-4 rounded-full bg-gradient-to-r from-cinematic-gold via-yellow-500 to-amber-600 text-cinematic-dark font-bold text-base shadow-xl hover:shadow-cinematic-gold/40 hover:scale-105 transition-all flex items-center justify-center gap-3 mx-auto">
+                            <i class="fa-solid fa-check-circle"></i> Confirm Box Office Reservation
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-cinematic-crimson flex items-center justify-center text-cinematic-gold">
+                            <i class="fa-solid fa-film"></i>
+                        </div>
+                        <span class="text-xl font-serif font-bold gold-gradient-text">Bollywood Saga</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed font-light">
+                        The ultimate cinematic dining destination where royal Awadhi gastronomy meets silver-screen splendor.
+                    </p>
+                    <div class="flex items-center gap-3 text-cinematic-gold pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center hover:bg-cinematic-gold hover:text-cinematic-dark transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center hover:bg-cinematic-gold hover:text-cinematic-dark transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center hover:bg-cinematic-gold hover:text-cinematic-dark transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full glass-panel flex items-center justify-center hover:bg-cinematic-gold hover:text-cinematic-dark transition-colors"><i class="fa-brands fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif font-bold text-white text-base mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-cinematic-gold transition-colors">Home Premiere</a></li>
+                        <li><a href="#about" class="hover:text-cinematic-gold transition-colors">The Saga Story</a></li>
+                        <li><a href="#menu" class="hover:text-cinematic-gold transition-colors">Cinematic Menu</a></li>
+                        <li><a href="#experience" class="hover:text-cinematic-gold transition-colors">Ambience & VIP</a></li>
+                        <li><a href="#reviews" class="hover:text-cinematic-gold transition-colors">Critic Reviews</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif font-bold text-white text-base mb-4">Showtimes & Hours</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between"><span class="text-slate-300">Mon - Thu:</span> <span>12:00 PM - 11:00 PM</span></li>
+                        <li class="flex justify-between"><span class="text-slate-300">Fri - Sat:</span> <span>12:00 PM - 01:00 AM</span></li>
+                        <li class="flex justify-between"><span class="text-slate-300">Sunday Brunch:</span> <span>11:00 AM - 12:00 AM</span></li>
+                        <li class="pt-2 text-cinematic-gold font-medium">Valet Parking Available 24/7</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif font-bold text-white text-base mb-4">Studio Headquarters</h4>
+                    <ul class="space-y-3 text-xs">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot text-cinematic-gold mt-1"></i>
+                            <span>70 Star Boulevard, Cinema District, Downtown</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-cinematic-gold"></i>
+                            <span>+1 (800) 555-SAGA (7242)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-cinematic-gold"></i>
+                            <span>vip@bollywoodsagarestro.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 Bollywood Saga Restro. All Rights Reserved. Crafted for Cinematic Luxury.</p>
+                <div class="flex gap-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-cinematic-gold transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-cinematic-gold transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-cinematic-gold transition-colors">Press Kit</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reservation Success Modal -->
+    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden">
+        <div class="glass-panel max-w-md w-full mx-4 p-8 rounded-3xl border border-cinematic-gold text-center relative shadow-2xl animate-fade-in">
+            <div class="w-16 h-16 rounded-full bg-cinematic-gold/20 border border-cinematic-gold flex items-center justify-center text-cinematic-gold text-2xl mx-auto mb-6">
+                <i class="fa-solid fa-ticket"></i>
+            </div>
+            <h3 class="text-2xl font-serif font-bold text-white mb-2">Box Office Reserved!</h3>
+            <p id="modal-msg" class="text-slate-300 text-sm mb-6 leading-relaxed">
+                Thank you! Your table has been booked successfully. We have sent confirmation details to your email.
+            </p>
+            <button id="close-modal-btn" class="w-full py-3 rounded-full bg-gradient-to-r from-cinematic-gold to-yellow-600 text-cinematic-dark font-bold text-sm shadow-lg hover:scale-105 transition-transform">
+                Awesome, Return to Lobby
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Menu Items Data Source
+        const menuItems = [
+            {
+                id: 1,
+                name: "Badshahi Galouti Kebab",
+                category: "starters",
+                price: "$22.00",
+                description: "Melt-in-mouth smoked lamb patties infused with 32 royal Awadhi spices, served with saffron warqi paratha.",
+                image: "https://images.unsplash.com/photo-1599487488170-d41ec9c172f0?auto=format&fit=crop&q=80&w=600",
+                badge: "Chef's Special"
+            },
+            {
+                id: 2,
+                name: "Sholay Paneer Tikka",
+                category: "starters",
+                price: "$18.00",
+                description: "Cottage cheese marinated in fiery Kashmiri chili yogurt, flamed live at your table with charcoal smoke.",
+                image: "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&q=80&w=600",
+                badge: "Spicy & Fiery"
+            },
+            {
+                id: 3,
+                name: "Dabangg Tandoori Prawns",
+                category: "starters",
+                price: "$26.00",
+                description: "Jumbo tiger prawns marinated in lemon-garlic tandoori spices and roasted in a clay oven.",
+                image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&q=80&w=600",
+                badge: "Seafood Hit"
+            },
+            {
+                id: 4,
+                name: "Mughal-E-Azam Butter Chicken",
+                category: "mains",
+                price: "$30.00",
+                description: "Tender tandoori chicken simmered in a velvety, buttery tomato gravy enriched with fenugreek and heavy cream.",
+                image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&q=80&w=600",
+                badge: "All-Time Blockbuster"
+            },
+            {
+                id: 5,
+                name: "Devdas Dum Biryani (Lamb/Chicken)",
+                category: "mains",
+                price: "$28.00",
+                description: "Aromatic basmati rice and tender meat slow-cooked in a sealed dough pot with saffron and rose water.",
+                image: "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&q=80&w=600",
+                badge: "Signature"
+            },
+            {
+                id: 6,
+                name: "Royal Dal Makhani",
+                category: "mains",
+                price: "$20.00",
+                description: "Black lentils simmered overnight on slow charcoal embers with white butter and aromatic spices.",
+                image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&q=80&w=600",
+                badge: "Vegetarian Icon"
+            },
+            {
+                id: 7,
+                name: "Don's Elixir (Smoked Cocktail)",
+                category: "cocktails",
+                price: "$19.00",
+                description: "Bourbon, artisanal cinnamon syrup, and bitters infused with applewood smoke under a glass dome.",
+                image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=600",
+                badge: "Molecular Hit"
+            },
+            {
+                id: 8,
+                name: "Dilwale Rumani Mojito",
+                category: "cocktails",
+                price: "$17.00",
+                description: "White rum, fresh pomegranates, mint leaves, lime, and sparkling soda with rose petal mist.",
+                image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=600",
+                badge: "Refreshing"
+            },
+            {
+                id: 9,
+                name: "Shahi Tukda Royal Bread Pudding",
+                category: "desserts",
+                price: "$14.00",
+                description: "Golden fried bread soaked in saffron sugar syrup, topped with rich rabri and crushed pistachios.",
+                image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=600",
+                badge: "Royal Sweet"
+            },
+            {
+                id: 10,
+                name: "Gulab Jamun Flambé",
+                category: "desserts",
+                price: "$12.00",
+                description: "Warm milk-solid dumplings soaked in cardamom syrup, ignited with warm rum at your table.",
+                image: "https://images.unsplash.com/photo-1601000938360-4e3e7f4c9c1b?auto=format&fit=crop&q=80&w=600",
+                badge: "Crowd Favorite"
+            }
+        ];
+
+        // Render Menu Items
+        function renderMenu(category = 'all') {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+
+            const filtered = category === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === category);
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel rounded-2xl overflow-hidden border border-cinematic-gold/20 shadow-xl flex flex-col justify-between group hover:border-cinematic-gold/60 transition-all duration-300';
+                card.innerHTML = `
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/600x400/131018/D4AF37?text=Bollywood+Saga'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 px-3 py-1 rounded-full bg-cinematic-crimson/80 backdrop-blur-md text-cinematic-gold text-xs font-bold border border-cinematic-gold/30">
+                            ${item.badge}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-serif font-bold text-xl text-white">${item.name}</h3>
+                                <span class="text-cinematic-gold font-bold text-lg">${item.price}</span>
+                            </div>
+                            <p class="text-slate-300 text-xs font-light leading-relaxed mb-6">${item.description}</p>
+                        </div>
+                        <a href="#reservation" class="w-full py-2.5 rounded-xl bg-white/5 border border-cinematic-gold/30 text-cinematic-gold text-xs font-semibold text-center hover:bg-cinematic-gold hover:text-cinematic-dark transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-utensils"></i> Order in Restaurant
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize Menu Filtering
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu('all');
+
+            const filterButtons = document.querySelectorAll('.menu-filter-btn');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterButtons.forEach(b => {
+                        b.classList.remove('active', 'bg-gradient-to-r', 'from-cinematic-gold', 'to-yellow-600', 'text-cinematic-dark', 'shadow-md');
+                        b.classList.add('glass-panel', 'text-slate-300');
+                    });
+                    e.target.classList.remove('glass-panel', 'text-slate-300');
+                    e.target.classList.add('active', 'bg-gradient-to-r', 'from-cinematic-gold', 'to-yellow-600', 'text-cinematic-dark', 'shadow-md');
+
+                    const category = e.target.getAttribute('data-category');
+                    renderMenu(category);
+                });
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Navbar Scroll Effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-cinematic-dark/95', 'shadow-2xl');
+                } else {
+                    navbar.classList.remove('bg-cinematic-dark/95', 'shadow-2xl');
+                }
+            });
+
+            // Reservation Form Handling
+            const reservationForm = document.getElementById('reservation-form');
+            const successModal = document.getElementById('success-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const modalMsg = document.getElementById('modal-msg');
+
+            reservationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('res-name').value;
+                const date = document.getElementById('res-date').value;
+                const time = document.getElementById('res-time').value;
+                const guests = document.getElementById('res-guests').value;
+                const booth = document.getElementById('res-booth').value;
+
+                modalMsg.innerHTML = `Congratulations <span class="text-cinematic-gold font-bold">${name}</span>! Your table for <span class="text-cinematic-gold font-bold">${guests} guests</span> in the <span class="text-cinematic-gold font-bold">${booth}</span> is confirmed for <span class="text-cinematic-gold font-bold">${date} at ${time}</span>. Red carpet ready!`;
+                
+                successModal.classList.remove('hidden');
+                reservationForm.reset();
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                successModal.classList.add('hidden');
+            });
+
+            // Set min date for reservation to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('res-date').setAttribute('min', today);
+        });
+    </script>
+</body>
+</html>
